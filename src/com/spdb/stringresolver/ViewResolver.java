@@ -2,13 +2,13 @@ package com.spdb.stringresolver;
 
 public class ViewResolver {
 	public static String NoLogin = "请先登录";
-	public static String LoginSuccess = "登录成功，欢迎您 %s";
-	public static String NoRegister = "抱歉 %s 未注册";
+	public static String LoginSuccess = "登录成功，欢迎您";
+	public static String NoRegister = "抱歉该未注册";
 	public static String ErrorRegister = "该用户已注册";
 	public static String RegisterSuccess = "注册成功，欢迎您的加入";
 	public static String DepositSuccess = "您已成功充值200元";
 	public static String PaySuccess = "您已成功付款200元";
-	public static String ErrorPassword = "密码错误";
+	public static String ErrorPassword = "用户名或密码错误";
 
 	public static void solveView(String msg) {
 		switch (msg){
