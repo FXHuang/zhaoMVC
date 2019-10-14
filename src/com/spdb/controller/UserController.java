@@ -15,11 +15,11 @@ public class UserController {
 
 		User user = userService.login(userName, passWord);
 		if (user == null) {// check if the user exist
-			ViewResolver.solveView("noRegister"); //
+			ViewResolver.solveView("noRegister","None"); //
 		} else if (!user.getPassword().equals(passWord)) { // check if the password match
-			ViewResolver.solveView("errorPassword");
+			ViewResolver.solveView("errorPassword","None");
 		} else {
-			ViewResolver.solveView("loginSuccess");
+			ViewResolver.solveView("loginSuccess",userName);
 		}
 	}
 

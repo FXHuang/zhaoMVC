@@ -40,10 +40,12 @@ public class CatchHelper {
 				 userController.register(user);
 				break;
 			case "deposite.do":
-				ViewResolver.solveView("depositSuccess");
+				String money = map.get("money");
+				ViewResolver.solveView("depositSuccess",money);
 				break;
 			case "pay.do":
-				ViewResolver.solveView("paySuccess");
+				String payMoney = map.get("money");
+				ViewResolver.solveView("paySuccess",payMoney);
 				break;
 			default: System.out.println("your command does not exist");
 		}
