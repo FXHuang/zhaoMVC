@@ -1,6 +1,8 @@
 package com.spdb.service;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.spdb.dao.UserDao;
@@ -11,7 +13,7 @@ public class UserService {
 	private UserDao userDao;
 	private boolean isLogin = false;
 	private Map<String, Object> result = new HashMap<>();
-
+	
 	public static String toRecordString(User user) {
 		return String.format("%s %s", user.getName(), user.getPassword());
 	}
@@ -21,15 +23,20 @@ public class UserService {
 		//Check if already exist first
 		User user = (User) userMap.get("userName");
 		
-		User newUser = userDao.findUser(user);
+		//User newUser = userDao.findUser(user);
 		//construct the user entity
 		
 	}
 
-	public User login(String userName, String passWord) {
-		userDao
-		
-		return null;
+	public User login(String userName, String passWord) throws IOException {
+		List<User> userList = userDao.findAllUsers();
+		//Generate user class through beanFactory
+		User user = userDao.findUser(userList, userName);
+		return user;
+//		if(user.getPassword().equals(passWord)) {
+//			return user;
+//		}
+//		return null;
 		
 	}
 

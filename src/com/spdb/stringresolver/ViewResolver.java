@@ -1,6 +1,6 @@
-package com.spdb.stringResolver;
+package com.spdb.stringresolver;
 
-public class ViewResol {
+public class ViewResolver {
 	public static String NOLOGIN = "请先登录";
 	public static String LOGINSUCCESS = "登录成功，欢迎您 %s";
 	public static String NoRegister = "抱歉 %s 未注册";
