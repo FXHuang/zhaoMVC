@@ -16,11 +16,11 @@ public class UserController {
 	public void login(String userName, String passWord) throws IOException {
 		User user = userService.login(userName, passWord);
 		if (user == null) {// check if the user exist
-			ViewResolver.solveView("loginSuccess",userName); //
+			ViewResolver.solveView("noRegister","None"); //
 		} else if (!user.getPassword().equals(passWord)) { // check if the password match
 			ViewResolver.solveView("errorPassword","None");
 		} else { // successfully login
-			
+			ViewResolver.solveView("loginSuccess",userName);
 			session.remove("user");
 			session.put("user", user);
 		}
@@ -29,9 +29,10 @@ public class UserController {
 	public void register(String userName, String passWord) throws IOException {
 		Boolean bool = userService.register(userName, passWord);
 		if (bool == false) {
-			 // the user already exist
+			ViewResolver.solveView("errorRegister",userName);// the user already exist
 		} else if (bool == true) {
 			 // register successfully
+			ViewResolver.solveView("registerSuccess",userName);
 		}
 
 	}
@@ -39,23 +40,26 @@ public class UserController {
 	public void deposite(int amount) {
 		User user = (User) session.get("user");
 		if (user == null) {
-			ViewResolver.solveView("loginSuccess",userName); // please login first
+			ViewResolver.solveView("noRegister","None"); // please login first
 		}else {
 			if(userService.deposit(user, amount)) {
-				 //deposit successfully
+				String amountString = amount + "";
+				ViewResolver.solveView("depositSuccess",amountString); //deposit successfully
 			}
 		}
 	}
 	
 	public void pay(int amount) {
+
 		User user = (User) session.get("user");
 		if (user == null) {
 			ViewResolver.solveView("noRegister","None");// please login first
 		}else {
 			if(userService.pay(user, amount)) {
-				 //deposit successfully
+				String amountString = amount + "";
+				ViewResolver.solveView("paySuccess",amountString); //deposit successfully
 			}else {
-				 //credit is not sufficient, please charge
+				ViewResolver.solveView("noEnoughMoney","None");//credit is not sufficient, please charge
 			}
 		}
 	}

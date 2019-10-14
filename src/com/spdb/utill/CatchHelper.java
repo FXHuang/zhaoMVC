@@ -36,16 +36,13 @@ public class CatchHelper {
 			case "register.do":
 				 userName = map.get("username");
 				 passWord = map.get("passWord");
-				
 				 userController.register(user);
 				break;
 			case "deposite.do":
-				String money = map.get("money");
-				ViewResolver.solveView("depositSuccess",money);
+
 				break;
 			case "pay.do":
-				String payMoney = map.get("money");
-				ViewResolver.solveView("paySuccess",payMoney);
+
 				break;
 			default: System.out.println("your command does not exist");
 		}

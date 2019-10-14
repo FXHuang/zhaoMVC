@@ -41,6 +41,9 @@ public class ViewResolver {
 			case "errorPassword":
 				System.out.println("用户名或密码错误");
 				break;
+			case "noEnoughMoney":
+				System.out.println("余额不足，请换卡!");
+				break;
 
 		}
 	}
