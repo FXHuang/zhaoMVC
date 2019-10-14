@@ -13,44 +13,38 @@ public class UserService {
 	private UserDao userDao;
 	private boolean isLogin = false;
 	private Map<String, Object> result = new HashMap<>();
-	
+
 	public static String toRecordString(User user) {
 		return String.format("%s %s", user.getName(), user.getPassword());
 	}
-
-
-	public void register(Map userMap) {
-		//Check if already exist first
-		User user = (User) userMap.get("userName");
-		
-		//User newUser = userDao.findUser(user);
-		//construct the user entity
-		
+	// should check logic be placed here or controller? if controller, how?
+	public boolean register(String userName, String passWord) throws IOException {
+		List<User> userList = userDao.findAllUsers();
+		User user = userDao.findUser(userList, userName);
+		if (user.getName().equals(userName)) {
+			return false; //already exists
+		}else {
+			User newUser = new User(userName,passWord,0);
+			userDao.addUser(newUser);
+			return true;
+		}
 	}
 
 	public User login(String userName, String passWord) throws IOException {
 		List<User> userList = userDao.findAllUsers();
-		//Generate user class through beanFactory
+		// should be replaced by Generating the user class through beanFactory ?
 		User user = userDao.findUser(userList, userName);
 		return user;
-//		if(user.getPassword().equals(passWord)) {
-//			return user;
-//		}
-//		return null;
-		
+
 	}
 
-	public void addMoney(User user , int addmoney) {
-		user.setMoney(user.getMoney() + addmoney);
+	public boolean deposit(User user, int addmoney) {
+		return false;
 	}
 
-	public void transfer(User user, int transmoney) {
+	public boolean pay(User user, int transmoney) {
 
-		if (!(user.getMoney() < transmoney)) {
-			user.setMoney(user.getMoney() - transmoney);
-		} else {
-			System.out.println("转账失败，余额不足");
-		}
+		return true;
 	}
 
 }

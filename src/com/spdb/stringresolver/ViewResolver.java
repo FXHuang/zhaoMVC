@@ -10,7 +10,10 @@ public class ViewResolver {
 	public static String PaySuccess = "您已成功付款%s 元";
 	public static String ERRORPASSWORD = "密码错误";
 
-	public static String 
+	public static void solveView() {
+		
+	}
+	
 
 
 }

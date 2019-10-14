@@ -11,5 +11,6 @@ import com.spdb.entity.User;
 public interface UserDao {	
 	public abstract List<User> findAllUsers() throws IOException;
 	public abstract void addUser(User user) throws IOException;
+	public abstract void updateUser(User user) throws IOException;
 	public abstract User findUser(List<User> user,String username) throws IOException;
 }

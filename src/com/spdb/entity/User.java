@@ -4,9 +4,9 @@ package com.spdb.entity;
 public class User{
     private String name;
     private String password;
-    private Double money;
+    private int money;
     
-    public User(String name, String password, Double money) {
+    public User(String name, String password, int money) {
         this.name = name;
         this.password = password;
         this.money = money;
@@ -28,11 +28,11 @@ public class User{
 		this.password = password;
 	}
 
-	public Double getMoney() {
+	public int getMoney() {
 		return money;
 	}
 
-	public void setMoney(Double money) {
+	public void setMoney(int money) {
 		this.money = money;
 	}
 
