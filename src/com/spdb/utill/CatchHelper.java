@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import com.spdb.controller.*;
 import com.spdb.entity.User;
+import com.spdb.stringresolver.ViewResolver;
 
 // 请求进来之后先由这个类拦截，然后到不同的控制类
 public class CatchHelper {
@@ -39,8 +40,12 @@ public class CatchHelper {
 				 userController.register(user);
 				break;
 			case "deposite.do":
+				String money = map.get("money");
+				ViewResolver.solveView("depositSuccess",money);
 				break;
 			case "pay.do":
+				String payMoney = map.get("money");
+				ViewResolver.solveView("paySuccess",payMoney);
 				break;
 			default: System.out.println("your command does not exist");
 		}
