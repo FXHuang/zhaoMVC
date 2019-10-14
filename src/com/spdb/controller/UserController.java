@@ -16,9 +16,9 @@ public class UserController {
 	public void login(String userName, String passWord) throws IOException {
 		User user = userService.login(userName, passWord);
 		if (user == null) {// check if the user exist
-			 //
+			ViewResolver.solveView("loginSuccess",userName); //
 		} else if (!user.getPassword().equals(passWord)) { // check if the password match
-			
+			ViewResolver.solveView("errorPassword","None");
 		} else { // successfully login
 			
 			session.remove("user");
@@ -39,7 +39,7 @@ public class UserController {
 	public void deposite(int amount) {
 		User user = (User) session.get("user");
 		if (user == null) {
-			 // please login first
+			ViewResolver.solveView("loginSuccess",userName); // please login first
 		}else {
 			if(userService.deposit(user, amount)) {
 				 //deposit successfully
@@ -50,7 +50,7 @@ public class UserController {
 	public void pay(int amount) {
 		User user = (User) session.get("user");
 		if (user == null) {
-			 // please login first
+			ViewResolver.solveView("noRegister","None");// please login first
 		}else {
 			if(userService.pay(user, amount)) {
 				 //deposit successfully

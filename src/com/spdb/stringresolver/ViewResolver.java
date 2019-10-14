@@ -2,12 +2,10 @@ package com.spdb.stringresolver;
 
 public class ViewResolver {
 
-<<<<<<< HEAD
 	public static void solveView() {
 		
 	}
-	
-=======
+
 //	public static String NoLogin = "请先登录";
 //	public static String LoginSuccess = "登录成功，欢迎您";
 //	public static String NoRegister = "抱歉%s未注册";
@@ -46,7 +44,5 @@ public class ViewResolver {
 
 		}
 	}
->>>>>>> 15f4596a5fe4621d4fa02547b94d5e98a0a15904
-
 
 }
